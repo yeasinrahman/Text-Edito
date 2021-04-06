@@ -8,7 +8,7 @@ win=tk.Tk()
 win.geometry('1280x800')
 win.title('YRpad editor')
 
-# part 1
+
 mainmenu=tk.Menu()
 
 url=''
@@ -81,7 +81,7 @@ mainmenu.add_cascade(label='file',menu=file)
 mainmenu.add_cascade(label='edit',menu=Edit)
 
 
-# part 2
+
 
 tool_bar=ttk.Label(win)
 tool_bar.pack(side=tk.TOP,fill=tk.X)
@@ -93,7 +93,7 @@ font_box['values']=font_t
 font_box.current(font_t.index('Arial'))
 font_box.grid(row=0,column=0,padx=5)
 
-# ?part 2.1
+
 
 size_bar=tk.IntVar()
 font_size=ttk.Combobox(tool_bar,width=14,textvariable=size_bar,state='readonly')
@@ -101,7 +101,7 @@ font_size['values']=tuple(range(8,81))
 font_size.current(4)
 font_size.grid(row=0,column=1 ,padx=5)
 
-# ?bold button
+
 
 bold_btn1=ttk.Button(tool_bar,text='Bold')
 bold_btn1.grid(row=0,column=2,padx=5)
@@ -112,12 +112,12 @@ bold_btn3.grid(row=0,column=4,padx=5)
 bold_btn4=ttk.Button(tool_bar,text='colour')
 bold_btn4.grid(row=0,column=5,padx=5)
 
-# text editor
+
 
 text_editor=tk.Text(win)
 text_editor.config(wrap='word',relief=tk.FLAT)
 
-# scrolbar
+
 
 scbar=tk.Scrollbar(win)
 scbar.pack(side=tk.RIGHT,fill=tk.Y)
@@ -127,7 +127,7 @@ scbar.config(command=text_editor.yview)
 text_editor.config(yscrollcommand=scbar.set)
 
 
-# font size
+
 curent_font_family='Arial'
 curent_font_size=12
 def change_font(win):
@@ -145,7 +145,7 @@ font_size.bind('<<ComboboxSelected>>',change_font_size)
 
 text_editor.config(font=('Arial',12))
 
-# for bold
+
 def change_bold(event):
     text_bold=tk.font.Font(font=text_editor['font'])
     if text_bold.actual()['weight']=='normal':
@@ -156,7 +156,7 @@ def change_bold(event):
 bold_btn1.bind('<Button-1>',change_bold)
 
 
-# for italic?
+
 def change_italic(event):
     text_bold=tk.font.Font(font=text_editor['font'])
     if text_bold.actual()['slant']=='roman':
@@ -166,7 +166,7 @@ def change_italic(event):
 
 bold_btn2.bind('<Button-1>',change_italic)
 
-# for underline
+
 def change_underline(event):
     text_bold=tk.font.Font(font=text_editor['font'])
     if text_bold.actual()['underline']==0:
@@ -176,14 +176,14 @@ def change_underline(event):
 
 bold_btn3.bind('<Button-1>',change_underline)
 
-# for color
+
 def change_color(event):
     color_var=tk.colorchooser.askcolor()
     text_editor.configure(fg=color_var[1])
 bold_btn4.bind('<Button>',change_color)
 
 
-# statusbar
+
 sbar=ttk.Label(win,text='statusbar')
 sbar.pack(side=tk.BOTTOM)
 
